@@ -7,7 +7,8 @@
         <entry key="..\:/Flutter_Projects/HappyPlaces/app/src/main/res/drawable/shape_button_rounded.xml" value="0.14635416666666667" />
         <entry key="..\:/Flutter_Projects/HappyPlaces/app/src/main/res/drawable/shape_image_view_border.xml" value="0.14635416666666667" />
         <entry key="..\:/Flutter_Projects/HappyPlaces/app/src/main/res/layout/activity_add_happy_place.xml" value="0.2" />
-        <entry key="..\:/Flutter_Projects/HappyPlaces/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/Flutter_Projects/HappyPlaces/app/src/main/res/layout/activity_main.xml" value="0.176" />
+        <entry key="..\:/Flutter_Projects/HappyPlaces/app/src/main/res/layout/item_happy_place.xml" value="0.264" />
       </map>
     </option>
   </component>
