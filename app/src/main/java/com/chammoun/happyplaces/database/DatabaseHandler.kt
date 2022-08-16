@@ -1,4 +1,4 @@
-package com.happyplaces.database
+package com.chammoun.happyplaces.database
 
 import android.content.ContentValues
 import android.content.Context

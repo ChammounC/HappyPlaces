@@ -19,7 +19,7 @@ import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import com.chammoun.happyplaces.R
 import com.chammoun.happyplaces.models.HappyPlaceModel
-import com.happyplaces.database.DatabaseHandler
+import com.chammoun.happyplaces.database.DatabaseHandler
 import com.karumi.dexter.Dexter
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener
 import java.text.SimpleDateFormat
@@ -114,7 +114,7 @@ class AddHappyPlaceActivity : AppCompatActivity(), View.OnClickListener {
                     val addHappyPlace = dbHandler.addHappyPlace(happyPlaceModel)
 
                     if(addHappyPlace >0){
-                        Toast.makeText(this,"The happy place details are inserted successfully",Toast.LENGTH_SHORT).show()
+                        setResult(Activity.RESULT_OK)
                         finish()
                     }
                     }
