@@ -15,36 +15,23 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    /**
-     * This function is auto created by Android when the Activity Class is created.
-     */
     override fun onCreate(savedInstanceState: Bundle?) {
-        //This call the parent constructor
         super.onCreate(savedInstanceState)
 
-        // This is used to align the xml view to this class
         setContentView(R.layout.activity_main)
 
-        // Setting an click event for Fab Button and calling the AddHappyPlaceActivity.
         fabAddHappyPlace.setOnClickListener {
             val intent = Intent(this@MainActivity, AddHappyPlaceActivity::class.java)
 
-            // TODO(Step 1 : Passing an request code while activity is launched.)
-            // START
             startActivityForResult(intent, ADD_PLACE_ACTIVITY_REQUEST_CODE)
-            // END
         }
 
         getHappyPlacesListFromLocalDB()
     }
 
-    // TODO(Step 4 : It is called when the activity which launched with the request code and expecting a result from the launched activity.)
-    // START
-    // Call Back method  to get the Message form other Activity
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        // check if the request code is same as what is passed  here it is 'ADD_PLACE_ACTIVITY_REQUEST_CODE'
         if (requestCode == ADD_PLACE_ACTIVITY_REQUEST_CODE) {
             if (resultCode == Activity.RESULT_OK) {
                 getHappyPlacesListFromLocalDB()
@@ -53,11 +40,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-    // END
 
-    /**
-     * A function to get the list of happy place from local database.
-     */
     private fun getHappyPlacesListFromLocalDB() {
 
         val dbHandler = DatabaseHandler(this)
@@ -74,9 +57,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    /**
-     * A function to populate the recyclerview to the UI.
-     */
     private fun setupHappyPlacesRecyclerView(happyPlacesList: ArrayList<HappyPlaceModel>) {
 
         rv_happy_places_list.layoutManager = LinearLayoutManager(this)
@@ -84,12 +64,17 @@ class MainActivity : AppCompatActivity() {
 
         val placesAdapter = HappyPlacesAdapter(this, happyPlacesList)
         rv_happy_places_list.adapter = placesAdapter
+
+        placesAdapter.setOnClickListener(object :
+            HappyPlacesAdapter.OnClickListener {
+            override fun onClick(position: Int, model: HappyPlaceModel) {
+                val intent = Intent(this@MainActivity, HappyPlaceDetailActivity::class.java)
+                startActivity(intent)
+            }
+        })
     }
 
-    // TODO(Step 2: Declare a static variable which we will using for notify the item is added when we will be returning back after adding.)
-    // START
     companion object{
         private const val ADD_PLACE_ACTIVITY_REQUEST_CODE = 1
     }
-    // END
 }
