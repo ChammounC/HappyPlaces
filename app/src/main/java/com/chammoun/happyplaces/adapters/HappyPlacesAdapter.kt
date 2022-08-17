@@ -44,9 +44,7 @@ open class HappyPlacesAdapter(
             holder.itemView.tvDescription.text = model.description
             
             holder.itemView.setOnClickListener{
-                if(onClickListener !=null){
-                    onClickListener!!.onClick(position, model)
-                }
+                onClickListener.onClick(position, model)
             }
         }
     }
